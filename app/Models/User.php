@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'login_otp_code',
+        'login_otp_expires_at',
     ];
 
     /**
@@ -31,6 +33,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'login_otp_code',
     ];
 
     /**
@@ -42,6 +45,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'login_otp_expires_at' => 'datetime',
             'password' => 'hashed',
         ];
     }

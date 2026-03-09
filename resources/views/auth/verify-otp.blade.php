@@ -10,7 +10,20 @@
 
         <div>
             <x-input-label for="otp" :value="__('Código OTP')" />
-            <x-text-input id="otp" class="block mt-1 w-full" type="text" name="otp" :value="old('otp')" required autofocus maxlength="6" autocomplete="one-time-code" />
+            <x-text-input
+                id="otp"
+                class="block mt-1 w-full"
+                type="text"
+                name="otp"
+                :value="old('otp')"
+                required
+                autofocus
+                maxlength="6"
+                inputmode="numeric"
+                pattern="[0-9]{6}"
+                autocomplete="one-time-code"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
             <x-input-error :messages="$errors->get('otp')" class="mt-2" />
         </div>
 
