@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -37,6 +39,11 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
+            <x-input-error :messages="$errors->get('g-recaptcha-response')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
